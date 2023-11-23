@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         scoreLabel.textAlignment = .right
         scoreLabel.text = "Score: 0"
-        scoreLabel.font = UIFont.systemFont(ofSize: 22)
+        scoreLabel.font = UIFont.systemFont(ofSize: 24)
         view.addSubview(scoreLabel)
         
         cluesLabel = UILabel()
@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         cluesLabel.font = UIFont.systemFont(ofSize: 24)
         cluesLabel.text = "CLUES"
         cluesLabel.numberOfLines = 0
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(cluesLabel)
         
         answersLabel = UILabel()
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
         answersLabel.text = "ANSWERS"
         answersLabel.textAlignment = .right
         answersLabel.numberOfLines = 0
+        answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(answersLabel)
         
         currentAnswer = UITextField()
@@ -54,11 +56,13 @@ class ViewController: UIViewController {
         let submit = UIButton(type: .system)
         submit.translatesAutoresizingMaskIntoConstraints = false
         submit.setTitle("SUBMIT", for: .normal)
+        submit.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         view.addSubview(submit)
         
         let clear = UIButton(type: .system)
         clear.translatesAutoresizingMaskIntoConstraints = false
         clear.setTitle("CLEAR", for: .normal)
+        clear.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         view.addSubview(clear)
         
         let buttonsView = UIView()
@@ -84,11 +88,11 @@ class ViewController: UIViewController {
             
             submit.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor),
             submit.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
-            submit.heightAnchor.constraint(equalToConstant: 44),
+            submit.heightAnchor.constraint(equalToConstant: 64),
             
             clear.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
-            clear.heightAnchor.constraint(equalToConstant: 44),
+            clear.heightAnchor.constraint(equalToConstant: 64),
             
             buttonsView.widthAnchor.constraint(equalToConstant: 750),
             buttonsView.heightAnchor.constraint(equalToConstant: 320),
@@ -98,9 +102,22 @@ class ViewController: UIViewController {
             
         ])
         
-        cluesLabel.backgroundColor = .green
-        answersLabel.backgroundColor = .gray
-        buttonsView.backgroundColor = .brown
+        let width = 150
+        let height = 80
+        
+        for row in 0..<4{
+            for colum in 0..<5{
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                letterButton.setTitle("WWW", for: .normal)
+                
+                let frame = CGRect(x: colum * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+                
+                buttonsView.addSubview(letterButton)
+                letterButtons.append(letterButton)
+            }
+        }
     }
     
     override func viewDidLoad() {
