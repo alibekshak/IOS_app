@@ -63,12 +63,14 @@ class ViewController: UIViewController {
         submit.translatesAutoresizingMaskIntoConstraints = false
         submit.setTitle("SUBMIT", for: .normal)
         submit.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         view.addSubview(submit)
         
         let clear = UIButton(type: .system)
         clear.translatesAutoresizingMaskIntoConstraints = false
         clear.setTitle("CLEAR", for: .normal)
         clear.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        clear.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         view.addSubview(clear)
         
         let buttonsView = UIView()
@@ -116,6 +118,7 @@ class ViewController: UIViewController {
                 let letterButton = UIButton(type: .system)
                 letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
                 letterButton.setTitle("WWW", for: .normal)
+                letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
                 
                 let frame = CGRect(x: colum * width, y: row * height, width: width, height: height)
                 letterButton.frame = frame
@@ -143,5 +146,21 @@ class ViewController: UIViewController {
         
     }
     
+    func loadLevel(){
+        var clueString = ""
+        var solutionString = ""
+        var letterBits = [String]()
+        
+        if let levelFileURl = Bundle.main.url(forResource: "level\(level)", withExtension: "txt"){
+            if let levelConntents = try? String(contentsOf: levelFileURl){
+                var lines = levelConntents.components(separatedBy: "\n")
+                lines.shuffle()
+                
+                for (index, line) in lines.enumerated(){
+                    
+                }
+            }
+        }
+    }
 }
 
