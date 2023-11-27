@@ -15,6 +15,12 @@ class ViewController: UIViewController {
     var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
     
+    var activatedButtons = [UIButton]()
+    var solutions = [String]()
+    
+    var score = 0
+    var level = 1
+    
     
     override func loadView() {
         view = UIView()
@@ -124,7 +130,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    @objc func letterTapped(_ sender: UIButton){
+        
+    }
+    
+    @objc func submitTapped(_ sender: UIButton){
+        
+    }
 
-
+    @objc func clearTapped(_ sender: UIButton){
+        
+    }
+    
 }
 
