@@ -154,7 +154,7 @@ class ViewController: UIViewController {
             
             currentAnswer.text = ""
             score += 1
-            
+            scoreLabel.text = "Score: \(score)"
             if score % 7 == 0{
                 let ac = UIAlertController(title: "Good job!", message: "Ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's gooo!", style: .default, handler: levelUp))
